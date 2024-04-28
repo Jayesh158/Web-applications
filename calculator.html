@@ -15,7 +15,7 @@
         background-color: #fff;
         width: 450px;
         display: block;
-        margin: 0 auto;
+        margin: 30px auto;
         padding: 10px;
         border-radius: 20px;
     }
@@ -64,29 +64,56 @@
         <input type="text" placeholder="Length of rectangle" class="num" id="num1">
         <input type="text" placeholder="Width of rectangle" class="num" id="num2">
         <p class="text" id="answer"></p>
-        <button type="button" class="app-btn" onclick="calculate()">
+        <button type="button" class="app-btn" onclick="calculateRectangleArea()">
             Calculate
         </button>
-        <button type="button" class="app-btn" onclick="reset()">
+        <button type="button" class="app-btn" onclick="resetRectangle()">
+            Reset
+        </button>
+    </div>
+
+    <div class="container">
+        <h3 class="text">Area of Tiangle</h3>
+        <input type="text" placeholder="Height of triangle" class="num" id="height">
+        <input type="text" placeholder="Base of triangle" class="num" id="base">
+        <p class="text" id="finalans"></p>
+        <button type="button" class="app-btn" onclick="calculateTriangleArea()">
+            Calculate
+        </button>
+        <button type="button" class="app-btn" onclick="resetTriangle()">
             Reset
         </button>
     </div>
 
 <script>
-    function calculate(){
+    function calculateRectangleArea(){
         const input1 = document.getElementById("num1");
         const input2 = document.getElementById("num2");
         const total = parseInt(input1.value) * parseInt(input2.value)
         const finalans = document.getElementById("answer")
         finalans.innerHTML = `Answer:- ${total} m<sup>2</sup>`;
     }
-    function reset(){
+    function calculateTriangleArea(){
+        const input1 = document.getElementById("height");
+        const input2 = document.getElementById("base");
+        const total = 0.5 * parseFloat(input1.value) * parseFloat(input2.value)
+        const finalans = document.getElementById("finalans")
+        finalans.innerHTML = `Answer:- ${total} m<sup>2</sup>`;
+    }    
+    function resetRectangle(){
         const input1 = document.getElementById("num1");
         const input2 = document.getElementById("num2");
         const finalans = document.getElementById("answer")
-        
         input1.value = "";
+        input2.value = "";
+        finalans.innerText = "";
+    }
+    function resetTriangle(){
+        const input1 = document.getElementById("height");
+        const input2 = document.getElementById("base");
+        const finalans = document.getElementById("finalans")
         input1.value = "";
+        input2.value = "";
         finalans.innerText = "";
     }
 </script>
