@@ -11,11 +11,14 @@
         background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
         min-height: 100vh;
     }
+    .main-container{
+        display: flex;
+        justify-content: space-around;
+    }
     .container{
         background-color: #fff;
         width: 450px;
-        display: block;
-        margin: 30px auto;
+        margin: 30px 40px;
         padding: 10px;
         border-radius: 20px;
     }
@@ -52,6 +55,10 @@
         font-size: 25px;
     }
     @media screen and (max-width: 768px){
+        .main-container{
+            display: flex;
+            flex-direction: column;
+        }
         .container{
             width: 80%;
         }
@@ -59,6 +66,7 @@
 </style>
 <body>
     <h1 class="app-title">Calculator</h1>
+    <div class="main-container">
     <div class="container">
         <h3 class="text">Area of rectangle</h3>
         <input type="text" placeholder="Length of rectangle" class="num" id="num1">
@@ -84,6 +92,22 @@
             Reset
         </button>
     </div>
+    </div>
+    <div class="main-container">
+        <div class="container">
+            <h3 class="text">Simple Intrest</h3>
+            <input type="text" placeholder="initial pricipal" class="num" id="principal">
+            <input type="text" placeholder="Rate of intrest" class="num" id="rate">
+            <input type="text" placeholder="Time" class="num" id="time">
+            <p class="text" id="solution"></p>
+            <button type="button" class="app-btn" onclick="calculateSimpleIntrest()">
+                Calculate
+            </button>
+            <button type="button" class="app-btn" onclick="resetSimpleIntrest()">
+                Reset
+            </button>
+        </div>    
+    </div>
 
 <script>
     function calculateRectangleArea(){
@@ -91,13 +115,6 @@
         const input2 = document.getElementById("num2");
         const total = parseInt(input1.value) * parseInt(input2.value)
         const finalans = document.getElementById("answer")
-        finalans.innerHTML = `Answer:- ${total} m<sup>2</sup>`;
-    }
-    function calculateTriangleArea(){
-        const input1 = document.getElementById("height");
-        const input2 = document.getElementById("base");
-        const total = 0.5 * parseFloat(input1.value) * parseFloat(input2.value)
-        const finalans = document.getElementById("finalans")
         finalans.innerHTML = `Answer:- ${total} m<sup>2</sup>`;
     }    
     function resetRectangle(){
@@ -108,12 +125,39 @@
         input2.value = "";
         finalans.innerText = "";
     }
+
+    function calculateTriangleArea(){
+        const input1 = document.getElementById("height");
+        const input2 = document.getElementById("base");
+        const total = 0.5 * parseFloat(input1.value) * parseFloat(input2.value)
+        const finalans = document.getElementById("finalans")
+        finalans.innerHTML = `Answer:- ${total} m<sup>2</sup>`;
+    }
     function resetTriangle(){
         const input1 = document.getElementById("height");
         const input2 = document.getElementById("base");
         const finalans = document.getElementById("finalans")
         input1.value = "";
         input2.value = "";
+        finalans.innerText = "";
+    }
+
+    function calculateSimpleIntrest(){
+        const input1 = document.getElementById("principal");
+        const input2 = document.getElementById("rate");
+        const input3 = document.getElementById("time");
+        const total =  parseFloat(input1.value) * (1+parseFloat(input2.value)*parseFloat(input3.value))
+        const finalans = document.getElementById("solution")
+        finalans.innerText = `Answer:- ${total} Rs `;
+    }
+    function resetSimpleIntrest(){
+        const input1 = document.getElementById("principal");
+        const input2 = document.getElementById("rate");
+        const input3 = document.getElementById("time");
+        const finalans = document.getElementById("solution")
+        input1.value = "";
+        input2.value = "";
+        input3.value = "";
         finalans.innerText = "";
     }
 </script>
