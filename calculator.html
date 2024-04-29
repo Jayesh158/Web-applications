@@ -22,6 +22,13 @@
         padding: 10px;
         border-radius: 20px;
     }
+    .simple-container{
+        background-color: #fff;
+        width: 450px;
+        margin: 30px auto;
+        padding: 10px;
+        border-radius: 20px;
+    }
     .app-title{
         text-align: center;
         color: red;
@@ -62,6 +69,9 @@
         .container{
             width: 80%;
         }
+        .simple-container{
+            width: 80%;
+        }
     }
 </style>
 <body>
@@ -93,22 +103,48 @@
         </button>
     </div>
     </div>
-    <div class="main-container">
+
+    <div class="main-container"> 
         <div class="container">
-            <h3 class="text">Simple Intrest</h3>
-            <input type="text" placeholder="initial pricipal" class="num" id="principal">
-            <input type="text" placeholder="Rate of intrest" class="num" id="rate">
-            <input type="text" placeholder="Time" class="num" id="time">
-            <p class="text" id="solution"></p>
-            <button type="button" class="app-btn" onclick="calculateSimpleIntrest()">
+            <h3 class="text">Area of Circle</h3>
+            <input type="text" placeholder="radius" class="num" id="radii">
+            <input type="text" placeholder="height" class="num" id="high">
+            <p class="text" id="circle"></p>
+            <button type="button" class="app-btn" onclick="calculateCircleArea()">
                 Calculate
             </button>
-            <button type="button" class="app-btn" onclick="resetSimpleIntrest()">
+            <button type="button" class="app-btn" onclick="resetCircle()">
                 Reset
             </button>
-        </div>    
+        </div>
+      
+        <div class="container">
+            <h3 class="text">BMI calculator</h3>
+            <input type="text" placeholder="height in cm" class="num" id="foot">
+            <input type="text" placeholder="weight in kg" class="num" id="weight">
+            <p class="text" id="calculation"></p>
+            <button type="button" class="app-btn" onclick="calculateBMI()">
+                Calculate
+            </button>
+            <button type="button" class="app-btn" onclick="resetBMI()">
+                Reset
+            </button>
+        </div>
     </div>
 
+    <div class="simple-container">
+        <h3 class="text">Simple Intrest</h3>
+        <input type="text" placeholder="initial pricipal" class="num" id="principal">
+        <input type="text" placeholder="Rate of intrest" class="num" id="rate">
+        <input type="text" placeholder="Time" class="num" id="time">
+        <p class="text" id="solution"></p>
+        <button type="button" class="app-btn" onclick="calculateSimpleIntrest()">
+            Calculate
+        </button>
+        <button type="button" class="app-btn" onclick="resetSimpleIntrest()">
+            Reset
+        </button>
+    </div> 
 <script>
     function calculateRectangleArea(){
         const input1 = document.getElementById("num1");
@@ -158,6 +194,36 @@
         input1.value = "";
         input2.value = "";
         input3.value = "";
+        finalans.innerText = "";
+    }
+    function calculateBMI(){
+        const input1 = document.getElementById("foot");
+        const input2 = document.getElementById("weight");
+        const total =  parseFloat(input2.value)/(parseFloat(input1.value/100) * parseFloat(input1.value/100))
+        const finalans = document.getElementById("calculation")
+        finalans.innerHTML = `Answer:- ${total} Kg/m<sup>2</sup> `;
+    }
+    function resetBMI(){
+        const input1 = document.getElementById("foot");
+        const input2 = document.getElementById("weight");
+        const finalans = document.getElementById("calculation")
+        input1.value = "";
+        input2.value = "";
+        finalans.innerText = "";
+    }
+    function calculateCircleArea(){
+        const input1 = document.getElementById("radii");
+        const input2 = document.getElementById("high");
+        const total = 3.14 * parseInt(input1.value) * parseInt(input1.value) * parseInt(input2.value)
+        const finalans = document.getElementById("circle")
+        finalans.innerHTML = `Answer:- ${total} m<sup>2</sup>`;
+    }    
+    function resetCircle(){
+        const input1 = document.getElementById("radii");
+        const input2 = document.getElementById("high");
+        const finalans = document.getElementById("circle")
+        input1.value = "";
+        input2.value = "";
         finalans.innerText = "";
     }
 </script>
